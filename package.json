@@ -1,0 +1,22 @@
+{
+  "name": "jspang-vue",
+  "version": "1.0.0",
+  "description": "全局安装 live-server\r     npm install -g live-server\r     直接运行本地服务器 终端运行 live-server",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/controling/jsPang-vue.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/controling/jsPang-vue/issues"
+  },
+  "homepage": "https://github.com/controling/jsPang-vue#readme"
+}
