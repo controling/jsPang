@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>propsData option</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>propsData option</h1>
+    <hr>
+    <div id="app"></div>
+    <script>
+        var app_extend = Vue.extend({
+            template: `<div>扩展模板 -- {{message}} -- 挂载时传过来的数据 {{d}}</div>`,
+            data(){
+                return {
+                    message: 'hello'
+                }
+            },
+            props: ['d']
+        })
+
+        // 挂载扩展
+        new app_extend({propsData: {'d': 'world'}}).$mount('#app')
+    </script>
+</body>
+</html>

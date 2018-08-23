@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>methods option</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>methods option</h1>
+    <hr>
+    <div id="app">
+        <p>{{a}}</p>
+        <p><button @click = "add(3, $event)">add</button></p>
+
+        <!-- 组件调用选项对象里面的方法 -->
+        <p><btn @click.native = "add()"></btn></p>
+    </div>
+    <p><button onclick="app.add(2)">外部add</button></p>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                a: 1
+            },
+            components: {
+                'btn': {
+                    template: `<button>组件add</button>`
+                }
+            },
+            methods: {
+                add(num){
+                    if(num != undefined){
+                        this.a += num
+                    }else{
+                        this.a ++
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

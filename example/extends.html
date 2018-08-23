@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>extends option</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>extends option</h1>
+    <hr>
+    <div id="app">
+        <!-- {{num}} -->
+        ${num}
+        <p><button @click = "add">add</button></p>
+    </div>
+    <script>
+        var extendsObj = {
+            updated(){
+                console.log('扩展中的updated')
+            },
+            methods: {
+                add(){
+                    // 当与原生methods中的方法同名不执行
+                    console.log('扩展methods的方法')
+                    this.num++
+                }
+            }
+        }
+        var app = new Vue({
+            el: '#app',
+            data: {
+                num: 1
+            },
+            methods: {
+                add(){
+                    console.log('原生methods的方法')
+                    this.num++
+                }
+            },
+            updated(){
+                console.log('原生updated')
+            },
+            extends: extendsObj,  // 只能放对象, 只能有一个扩展
+            delimiters: ['${', '}'] // 限制数据渲染格式
+        })
+        for (var i = 0; i <= 3; i++) {
+            console.log(i)
+            setTimeout(function () {
+                console.log(i)
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

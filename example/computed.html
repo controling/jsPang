@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>computed option</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>computed option</h1>
+    <hr>
+    <div id="app">
+        <p>{{newPrice}}</p>
+        <ul>
+            <li v-for="item in reverseNews">{{item.title}} -- {{item.date}}</li>
+        </ul>
+    </div>
+    <script>
+        var newsList = [
+            {'title': '第一条新闻', date: '2018/8/1'},
+            {'title': '第二条新闻', date: '2018/8/2'},
+            {'title': '第三条新闻', date: '2018/8/2'},
+            {'title': '第四条新闻', date: '2018/8/3'}
+        ]
+        var app = new Vue({
+            el: '#app',
+            data: {
+                price: 100,
+                newsList: newsList
+            },
+            computed: {
+                newPrice(){
+                    return this.price = '¥' + this.price + '元'
+                },
+                reverseNews(){
+                    return this.newsList.reverse()
+                }
+            }
+        })
+    </script>
+</body>
+</html>
