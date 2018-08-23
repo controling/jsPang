@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>组件</h1>
+    <hr>
+    <div id="app">
+        <!-- <custom atr = "hello"></custom> -->
+        <custom :atr = "message"></custom>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'hello world'
+            },
+            components: {
+                'custom': {
+                    template: `<div>局部custom组件 属性值{{atr}}</div>`,
+                    props: ['atr'] // 属性名有-  写成驼峰
+                }
+            }
+        })
+    </script>
+</body>
+</html>
