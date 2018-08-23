@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue.directive 自定义指令</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>vue.directive 自定义指令</h1>
+    <hr>
+    <div id="app">
+        <div v-change="color">{{num}}</div>
+        <p><button @click="add">add</button></p>
+    </div>
+    <script>
+        Vue.directive('change', {
+            // 钩子函数
+            bind(el, binding){
+                console.log(el)
+                console.log(binding)
+                el.style = 'color:' + binding.value
+            }
+        })
+        var app = new Vue({
+            el: '#app',
+            data: {
+                num: 10,
+                color: '#f00'
+            },
+            methods: {
+                add(){
+                    this.num++
+                }
+            }
+        })
+    </script>
+</body>
+</html>
