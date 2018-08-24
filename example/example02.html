@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>example</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>example</h1>
+    <hr>
+    <div id="app"></div>
+    <p><button onclick="vm.$destroy()">销毁</button></p>
+    <p><button onclick="vm.$forceUpdate()">刷新</button></p>
+    <p><button onclick="tick()">更改数据</button></p>
+    <script>
+        var extendsObj = Vue.extend({
+            template: `<div>扩展模板 {{message}}</div>`,
+            data(){
+                return {
+                    message: 'hello'
+                }
+            },
+            mounted(){
+                console.log('mount挂载完成')
+            },
+            destroyed() {
+                console.log('销毁成功')
+            },
+            updated(){
+                console.log('刷新成功')
+            }
+        })
+        var vm = new extendsObj().$mount('#app')
+
+        function tick(){
+            vm.message = 'change the message'
+            vm.$nextTick(function(){
+                console.log('message数据更新完成后我被调用了')
+            })
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HelloWorld</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>HelloWorld</h1>
+    <hr>
+    <div id="app">
+        <custom>
+            <span slot="url">{{obj.url}}</span>
+            <span slot="title">{{obj.title}}</span>
+            <span slot="fun">{{obj.fun}}</span>
+        </custom>
+    </div>
+    <template id="tem">
+        <div>
+            <p>网站: <slot name="url"></slot></p>
+            <p>网站名: <slot name="title"></slot></p>
+            <p>功能: <slot name="fun"></slot></p>
+        </div>
+    </template>
+    <script>
+        var custom = {
+            template: '#tem'
+        }
+        var app = new Vue({
+            el: '#app',
+            data: {
+                obj: {
+                    url: 'http://www.baidu.com',
+                    title: '百度',
+                    fun: '搜索'
+                }
+            },
+            components: {
+                'custom': custom
+            }
+        })
+    </script>
+</body>
+</html>
